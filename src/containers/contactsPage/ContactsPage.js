@@ -1,46 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useState, useEffect } from 'react';
 import { ContactForm } from '../../components/contactForm/ContactForm';
-import { TitleList } from '../../components/tileList/TileList';
+import { TileList } from '../../components/tileList/TileList';
 
-
-export const ContactsPage = () => {
-  /*
-  Define state variables for 
-  contact info and duplicate check
-  */
+export const ContactsPage = (props) => {
+  // Define state variables for contact info and duplicate check
   const contacts = props.contacts;
   const addContact = props.addContact;
-
+  // local states
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-
   const [duplicate, setDuplicate] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    /*
-    Add contact info and clear data
-    if the contact name is not a duplicate
-    */
+    // Add contact info and clear data if the contact name is not a duplicate
     if (!duplicate) {
-      addContact(name, phone, contact);
 
+      addContact(name, phone, email);
+      // reseting values
       setName('');
       setPhone('');
       setEmail('');
     }
   };
 
-  /*
-  Using hooks, check for contact name in the 
-  contacts array variable in props
-  */
+
+  // check for contact name in the contacts array variable in props
   useEffect(() => {
-    for (contact in contacts) {
+    for (const contact of contacts) {
       if (name === contact.name) {
         setDuplicate(true);
       }
+
       return;
     }
   });
@@ -62,7 +55,7 @@ export const ContactsPage = () => {
       <hr />
       <section>
         <h2>Contacts</h2>
-        <TitleList
+        <TileList
           objArr={props.contacts}
         />
       </section>

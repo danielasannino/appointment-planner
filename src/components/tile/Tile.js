@@ -6,9 +6,9 @@ export const Tile = ({ value }) => {
     <div className="tile-container">
       {array.map((data, index) => {
         if (index === 0) {
-          return <p className='title-title' key={index}>{data}</p>
+          return <p className="tile-title" key={index}>{data}</p>;
         }
-        return <p className='title' key={index}>{data}</p>
+        return <p className="tile" key={index}>{data}</p>;
       })
       }
     </div>

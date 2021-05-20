@@ -1,29 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
+import { useState, useEffect } from 'react';
 import { AppointmentForm } from '../../components/appointmentForm/AppointmentForm';
-import { TitleList } from '../../components/tileList/TileList';
+import { TileList } from '../../components/tileList/TileList';
 
 export const AppointmentsPage = (props) => {
-  /*
-  Define state variables for 
-  appointment info
-  */
+  // Define state variables for appointment info
   const appointments = props.appointments;
   const contacts = props.contacts;
   const addAppointment = props.addAppointment;
-
+  // local States
   const [title, setTitle] = useState('');
   const [contact, setContact] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    /*
-    Add contact info and clear data  
-    */
+    // Add contact info and clear data 
     addAppointment(title, contact, date, time);
-
+    // reseting values
     setTitle('');
     setContact('');
     setDate('');
@@ -50,7 +45,7 @@ export const AppointmentsPage = (props) => {
       <hr />
       <section>
         <h2>Appointments</h2>
-        <TitleList objArr={appointments} />
+        <TileList objArr={appointments} />
       </section>
     </div>
   );
