@@ -11,12 +11,14 @@ export const ContactForm = ({
 }) => {
   return (
     <form onSubmit={handleSubmit}>
+      <label htmlFor='nameInput'>Name</label>
       <input
         type="text"
         value={name}
         onChange={({ target }) => { setName(target.value) }}
         required
       />
+      <label htmlFor='phoneInput'>Phone</label>
       <input
         type="tel"
         value={phone}
@@ -24,6 +26,7 @@ export const ContactForm = ({
         onChange={({ target }) => { setPhone(target.value) }}
         required
       />
+      <label htmlFor='emailInput'>Email</label>
       <input
         type="email"
         value={email}
